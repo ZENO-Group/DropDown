@@ -206,6 +206,14 @@ public final class DropDown: UIView {
 	Changing the background color automatically reloads the drop down.
 	*/
 	@objc public dynamic var selectionBackgroundColor = DPDConstant.UI.SelectionBackgroundColor
+    
+    
+    /**
+     The text color of the selected cell in the drop down.
+     
+     Changing the text color automatically reloads the drop down.
+     */
+    @objc public dynamic var selectionTextColor = DPDConstant.UI.SelectionTextColor
 
 	/**
 	The separator color between cells.
@@ -1016,9 +1024,10 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 			cell.accessibilityIdentifier = localizationKeysDataSource[index]
 		}
 		
-		cell.optionLabel.textColor = textColor
 		cell.optionLabel.font = textFont
 		cell.selectedBackgroundColor = selectionBackgroundColor
+        cell.selectedCellTextColor = selectionTextColor
+        cell.defaultCellTextColor = textColor
 		
 		if let cellConfiguration = cellConfiguration {
 			cell.optionLabel.text = cellConfiguration(index, dataSource[index])

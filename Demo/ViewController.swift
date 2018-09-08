@@ -115,6 +115,7 @@ class ViewController: UIViewController {
 		appearance.shadowRadius = 25
 		appearance.animationduration = 0.25
 		appearance.textColor = .darkGray
+        appearance.selectionTextColor = .red
 //		appearance.textFont = UIFont(name: "Georgia", size: 14)
 		
 		dropDowns.forEach {
