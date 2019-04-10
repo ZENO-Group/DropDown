@@ -117,6 +117,10 @@ class ViewController: UIViewController {
 		appearance.textColor = .darkGray
         appearance.selectionTextColor = .red
 //		appearance.textFont = UIFont(name: "Georgia", size: 14)
+
+		if #available(iOS 11.0, *) {
+			appearance.setupMaskedCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
+		}
 		
 		dropDowns.forEach {
 			/*** FOR CUSTOM CELLS ***/
@@ -126,7 +130,7 @@ class ViewController: UIViewController {
 				guard let cell = cell as? MyCell else { return }
 				
 				// Setup your custom UI components
-				cell.suffixLabel.text = "Suffix \(index)"
+				cell.logoImageView.image = UIImage(named: "logo_\(index % 10)")
 			}
 			/*** ---------------- ***/
 		}
