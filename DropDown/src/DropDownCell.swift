@@ -44,19 +44,17 @@ extension DropDownCell {
 		setSelected(highlighted, animated: animated)
 	}
 	
-	override open func setSelected(_ selected: Bool, animated: Bool) {
-		let executeSelection: () -> Void = { [weak self] in
-			guard let `self` = self else { return }
-
-			if let selectedBackgroundColor = self.selectedBackgroundColor {
-				if selected {
-					self.backgroundColor = selectedBackgroundColor
-                    self.optionLabel.textColor = self.highlightTextColor
-				} else {
-					self.backgroundColor = .clear
-                    self.optionLabel.textColor = self.normalTextColor
-				}
-			}
+    override open func setSelected(_ selected: Bool, animated: Bool) {
+        let executeSelection: () -> Void = { [weak self] in
+            guard let `self` = self else { return }
+            
+            if let selectedBackgroundColor = self.selectedBackgroundColor {
+                if selected {
+                    self.backgroundColor = selectedBackgroundColor
+                } else {
+                    self.backgroundColor = .clear
+                }
+            }
             
             if let selectedCellTextColor = self.selectedCellTextColor, let defaultCellTextColor = self.defaultCellTextColor {
                 if selected {
@@ -66,17 +64,15 @@ extension DropDownCell {
                     self.optionLabel.textColor = defaultCellTextColor
                 }
             }
-		}
-		
-		if animated {
-			UIView.animate(withDuration: 0.3, animations: {
-				executeSelection()
-			})
-		} else {
-			executeSelection()
-		}
-
-		accessibilityTraits = selected ? .selected : .none
-	}
+        }
+        
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                executeSelection()
+            })
+        } else {
+            executeSelection()
+        }
+    }
 	
 }

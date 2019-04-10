@@ -345,7 +345,7 @@ public final class DropDown: UIView {
      
      Changing the text color automatically reloads the drop down.
      */
-    @objc public dynamic var selectedTextColor = DPDConstant.UI.SelectedTextColor {
+    @objc public dynamic var selectedTextColor = DPDConstant.UI.SelectionTextColor {
         didSet { reloadAllComponents() }
     }
     
